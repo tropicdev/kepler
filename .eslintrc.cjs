@@ -28,6 +28,10 @@ const config = {
         fixStyle: "inline-type-imports",
       },
     ],
+    "react/no-unescaped-entities": 1,
+    "@typescript-eslint/no-unsafe-call": 1,
+    "@typescript-eslint/no-unsafe-member-access": 1,
+    "@typescript-eslint/no-unsafe-return": 1,
     "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
   },
 };
