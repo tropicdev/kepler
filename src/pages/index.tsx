@@ -20,8 +20,15 @@ export default function Home() {
         resolver: zodResolver(schema)
     });
 
-    const onSubmit = (data: FormValues) => {
-        emailMutation.mutate({ email: data.email })
+    const onSubmit = async (data: FormValues) => {
+        const success = await emailMutation.mutateAsync({ email: data.email })
+
+        if (success) {
+            alert("Thank you for signing up!")
+        } else {
+            alert("This email is already on the waitlist!")
+        }
+
     }
 
     return (
