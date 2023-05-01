@@ -7,6 +7,8 @@ const schema = z.object({
     email: z.string().email(),
 })
 
+type FormValues = z.infer<typeof schema>
+
 const content = `
 Thank you for your interest in Kepler, the ultimate Minecraft server generator and mod updater! Our waitlist is now open, and we invite you to sign up to be the first to know when Kepler is available.`
 
@@ -14,11 +16,11 @@ export default function Home() {
 
     const emailMutation = api.email.postEmail.useMutation()
 
-    const { register, handleSubmit, formState: { errors } } = useForm({
+    const { register, handleSubmit, formState: { errors } } = useForm<FormValues>({
         resolver: zodResolver(schema)
     });
 
-    const onSubmit = (data) => {
+    const onSubmit = (data: FormValues) => {
         emailMutation.mutate({ email: data.email })
     }
 

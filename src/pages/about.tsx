@@ -48,13 +48,13 @@ export default function About() {
                     <div className="lg:pr-4">
                         <div className="max-w-xl text-base leading-7 text-gray-700 lg:max-w-lg">
                             <p>
-                                Although we're not quite ready to launch yet, we invite you to join our waitlist so you can be the first to know when we're ready to go live.
-                                As a one-person team, we're passionate about what we do, and we're committed to providing you with the best possible experience. We believe that gaming is more than just a hobby; it's a lifestyle.
-                                That's why we're dedicated to building a platform that empowers you to take your online gaming experience to the next level.
+                                Although we&apos;re not quite ready to launch yet, we invite you to join our waitlist so you can be the first to know when we&apos;re ready to go live.
+                                As a one-person team, we&apos;re passionate about what we do, and we&apos;re committed to providing you with the best possible experience. We believe that gaming is more than just a hobby; it&apos;s a lifestyle.
+                                That&apos;s why we&apos;re dedicated to building a platform that empowers you to take your online gaming experience to the next level.
                             </p>
                             <p className="mt-8">
-                                So if you're looking to create your own Minecraft server or update your mods, be sure to sign up for our waitlist today. We'll keep you updated on our progress and let you know as soon as Kepler is ready for launch.
-                                Thank you for your support, and we can't wait to help you unleash the power of your Minecraft server!
+                                So if you&apos;re looking to create your own Minecraft server or update your mods, be sure to sign up for our waitlist today. We&apos;ll keep you updated on our progress and let you know as soon as Kepler is ready for launch.
+                                Thank you for your support, and we can&apos;t wait to help you unleash the power of your Minecraft server!
                             </p>
                         </div>
                     </div>

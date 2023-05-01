@@ -6,11 +6,12 @@ export const emailRouter = createTRPCRouter({
   postEmail: publicProcedure
     .input(z.object({ email: z.string() }))
     .mutation(async ({ ctx, input }) => {
-      return await ctx.prisma.email.create({
+      await ctx.prisma.email.create({
         data: {
           email: input.email,
         },
       });
+      return;
     }),
   getAll: publicProcedure.query(({ ctx }) => {
     return ctx.prisma.email.findMany();
