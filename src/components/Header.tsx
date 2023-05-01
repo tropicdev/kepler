@@ -3,13 +3,10 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, UserCircleIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import Link from 'next/link'
-import { getServerAuthSession } from '~/server/auth'
-import { useSession } from 'next-auth/react'
-import { GetServerSidePropsContext } from 'next'
+import { signIn, useSession } from 'next-auth/react'
 
 const navigation = [
     { name: 'Dashboard', href: '/dashboard', current: true },
-    { name: 'About', href: '/about', current: false },
 ]
 const userNavigation = [
     { name: 'Your Profile', href: '#' },
@@ -25,7 +22,12 @@ export default function Header() {
     const { data } = useSession()
 
     if (!data) {
-        return <p>You must login</p>
+        return (
+            <>
+                <p>You must login</p>
+                <button onClick={() => signIn()}> Sign In</button>
+            </>
+        )
     }
 
     return (
@@ -192,11 +194,3 @@ export default function Header() {
         </Disclosure>
     )
 }
-
-export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
-    return {
-        props: {
-            session: await getServerAuthSession(ctx),
-        },
-    };
-};
