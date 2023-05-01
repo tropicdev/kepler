@@ -2,6 +2,7 @@ import { type AppType } from "next/app";
 import { api } from "~/utils/api";
 import "~/styles/globals.css";
 import Head from "next/head";
+import Header from "./components/Header";
 
 
 const MyApp: AppType = ({
@@ -10,6 +11,7 @@ const MyApp: AppType = ({
 }) => {
   return (
     <>
+      <Header />
       <Head>
         <title>Kepler</title>
         <meta name="description" content="With ❤ from Tropic" />
