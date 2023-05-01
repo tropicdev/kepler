@@ -1,7 +1,26 @@
+import { useForm } from "react-hook-form";
+import { zodResolver } from '@hookform/resolvers/zod'
+import z from "zod";
+import { api } from "~/utils/api";
+
+const schema = z.object({
+    email: z.string().email(),
+})
+
 const content = `
 Thank you for your interest in Kepler, the ultimate Minecraft server generator and mod updater! Our waitlist is now open, and we invite you to sign up to be the first to know when Kepler is available.`
 
 export default function Home() {
+
+    const emailMutation = api.email.postEmail.useMutation()
+
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        resolver: zodResolver(schema)
+    });
+
+    const onSubmit = (data) => {
+        emailMutation.mutate({ email: data.email })
+    }
 
     return (
         <section className="relative flex flex-wrap lg:h-screen">
@@ -13,16 +32,17 @@ export default function Home() {
                     </p>
                 </div>
 
-                <form action="" className="mx-auto mb-0 mt-8 max-w-md space-y-4">
+                <form onSubmit={handleSubmit(onSubmit)} action="" className="mx-auto mb-0 mt-8 max-w-md space-y-4">
                     <div>
                         <label htmlFor="email" className="sr-only">Email</label>
-
                         <div className="relative">
                             <input
                                 type="email"
                                 className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                                 placeholder="Enter email"
+                                {...register("email")}
                             />
+                            <p>{errors.root?.message}</p>
 
                             <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
                                 <svg
